@@ -4,11 +4,13 @@ These code snippets are intended for use with <a href="https://rafiki.money" tar
 everyone is welcome to use these code snippets as a reference, please note that they may need to be adapted to suit your
 particular application.
 
----
+To view and run the latest examples, please use the Open Payments documentation and snippets:
 
 ### Prerequisites
+- Open Payments Docs: <a href="https://openpayments.dev" target="_blank">openpayments.dev</a>
+- Rust snippet sources: <a href="https://github.com/interledger/open-payments/tree/main/snippets/rust" target="_blank">interledger/open-payments/snippets/rust</a>
 
--   Rust (>=1.43.1)
+-   Rust (>=1.85)
 -   Cargo (comes with Rust)
 -   [Rust Open Payments SDK](https://github.com/interledger/open-payments-rust)
 
@@ -51,33 +53,29 @@ From the repository's root you can execute the following commands:
 
 | Command | Description |
 | ------------------ | ---------------------------------------------- |
-| `cargo run --features snippets --bin grant-cancel` | Cancel a grant |
-| `cargo run --features snippets --bin grant-continuation` | Continuation request for a grant (interactive) |
-| `cargo run --features snippets --bin grant-incoming-payment` | Request a grant for an incoming payment |
-| `cargo run --features snippets --bin grant-outgoing-payment` | Request a grant for an outgoing payment |
-| `cargo run --features snippets --bin grant-quote` | Request a grant for a quote |
-| `cargo run --features snippets --bin incoming-payment-create` | Create an incoming payment |
-| `cargo run --features snippets --bin incoming-payment-complete` | Complete an incoming payment |
-| `cargo run --features snippets --bin incoming-payment-get` | Retrieve an incoming payment |
-| `cargo run --features snippets --bin incoming-payment-list` | List incoming payments |
-| `cargo run --features snippets --bin outgoing-payment-create` | Create an outgoing payment |
-| `cargo run --features snippets --bin outgoing-payment-get` | Retrieve an outgoing payment |
-| `cargo run --features snippets --bin outgoing-payment-list` | List outgoing payments |
-| `cargo run --features snippets --bin quote-create` | Create a quote |
-| `cargo run --features snippets --bin quote-create-debit-amount` | Create a quote with debit amount |
-| `cargo run --features snippets --bin quote-create-receive-amount` | Create a quote with receive amount |
-| `cargo run --features snippets --bin quote-get` | Retrieve a quote |
-| `cargo run --features snippets --bin wallet-address-get` | Retrieve wallet address' information |
-| `cargo run --features snippets --bin wallet-address-get-keys` | Retrieve wallet address' JWKs |
-| `cargo run --features snippets --bin token-revoke` | Revoke a token |
-| `cargo run --features snippets --bin token-rotate` | Rotate a token |
+| `cargo run --bin grant-cancel` | Cancel a grant |
+| `cargo run --bin grant-continuation` | Continuation request for a grant (interactive) |
+| `cargo run --bin grant-incoming-payment` | Request a grant for an incoming payment |
+| `cargo run --bin grant-outgoing-payment` | Request a grant for an outgoing payment |
+| `cargo run --bin grant-quote` | Request a grant for a quote |
+| `cargo run --bin incoming-payment-create` | Create an incoming payment |
+| `cargo run --bin incoming-payment-complete` | Complete an incoming payment |
+| `cargo run --bin incoming-payment-get` | Retrieve an incoming payment |
+| `cargo run --bin incoming-payment-list` | List incoming payments |
+| `cargo run --bin outgoing-payment-create` | Create an outgoing payment |
+| `cargo run --bin outgoing-payment-get` | Retrieve an outgoing payment |
+| `cargo run --bin outgoing-payment-list` | List outgoing payments |
+| `cargo run --bin quote-create` | Create a quote |
+| `cargo run --bin quote-create-debit-amount` | Create a quote with debit amount |
+| `cargo run --bin quote-create-receive-amount` | Create a quote with receive amount |
+| `cargo run --bin quote-get` | Retrieve a quote |
+| `cargo run --bin wallet-address-get` | Retrieve wallet address' information |
+| `cargo run --bin wallet-address-get-keys` | Retrieve wallet address' JWKs |
+| `cargo run --bin token-revoke` | Revoke a token |
+| `cargo run --bin token-rotate` | Rotate a token |
 
 Example:
 
 ```sh
-cargo run --features snippets --bin grant-incoming-payment
+cargo run --bin grant-incoming-payment
 ```
-
-### Examples
-
--   [Payment flow example](./examples/payment-flow.md)
