@@ -10,7 +10,11 @@ pub(crate) async fn request_grant(
     auth_url: &str,
     grant: &GrantRequest,
 ) -> Result<GrantResponse> {
-    let body = serde_json::to_string(grant).map_err(OpClientError::Serde)?;
+    let grant_with_client = GrantRequest {
+        client: client.config.wallet_address_url.clone(),
+        ..grant.clone()
+    };
+    let body = serde_json::to_string(&grant_with_client).map_err(OpClientError::from)?;
 
     AuthenticatedRequest::new(client, Method::POST, auth_url.to_string())
         .with_body(body)
@@ -27,7 +31,7 @@ pub(crate) async fn continue_grant(
     let body = serde_json::to_string(&ContinueRequest {
         interact_ref: Some(interact_ref.to_string()),
     })
-    .map_err(OpClientError::Serde)?;
+    .map_err(OpClientError::from)?;
 
     AuthenticatedRequest::new(client, Method::POST, continue_uri.to_string())
         .with_body(body)

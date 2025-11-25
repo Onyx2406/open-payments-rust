@@ -15,8 +15,8 @@ async fn test_grant_flows() {
         .await
         .expect("Failed to get wallet address");
 
-    let grant_request = GrantRequest {
-        access_token: AccessTokenRequest {
+    let grant_request = GrantRequest::new(
+        AccessTokenRequest {
             access: vec![AccessItem::IncomingPayment {
                 actions: vec![
                     IncomingPaymentAction::Create,
@@ -28,9 +28,8 @@ async fn test_grant_flows() {
                 identifier: None,
             }],
         },
-        client: wallet_address.id,
-        interact: None,
-    };
+        None,
+    );
 
     let response = test_setup
         .auth_client
@@ -44,7 +43,6 @@ async fn test_grant_flows() {
             access_token,
             continue_,
         } => {
-            println!("Received access token: {}", access_token.value);
             assert!(!access_token.value.is_empty());
             assert!(!access_token.manage.is_empty());
             assert!(!continue_.uri.is_empty());

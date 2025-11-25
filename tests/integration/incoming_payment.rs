@@ -13,8 +13,8 @@ async fn get_access_token(test_setup: &mut TestSetup) -> String {
         .await
         .expect("Failed to get wallet address");
 
-    let grant_request = GrantRequest {
-        access_token: AccessTokenRequest {
+    let grant_request = GrantRequest::new(
+        AccessTokenRequest {
             access: vec![AccessItem::IncomingPayment {
                 actions: vec![
                     IncomingPaymentAction::Create,
@@ -26,9 +26,8 @@ async fn get_access_token(test_setup: &mut TestSetup) -> String {
                 identifier: None,
             }],
         },
-        client: wallet_address.id,
-        interact: None,
-    };
+        None,
+    );
 
     let response = test_setup
         .auth_client
@@ -75,7 +74,6 @@ async fn test_incoming_payment_flows() {
         .await
         .expect("Failed to create incoming payment");
 
-    println!("Created incoming payment: {}", incoming_payment.id);
     assert_eq!(incoming_payment.wallet_address, test_setup.wallet_address);
     assert_eq!(
         incoming_payment.incoming_amount.as_ref().unwrap().value,

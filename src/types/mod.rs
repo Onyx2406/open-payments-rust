@@ -36,16 +36,15 @@
 //! };
 //!
 //! // Create a grant request for incoming payment
-//! let grant_request = GrantRequest {
-//!     access_token: AccessTokenRequest {
+//! let grant_request = GrantRequest::new(
+//!     AccessTokenRequest {
 //!         access: vec![AccessItem::IncomingPayment {
 //!             actions: vec![IncomingPaymentAction::Create, IncomingPaymentAction::Read],
 //!             identifier: None,
 //!         }],
 //!     },
-//!     client: "https://rafiki.money/alice".to_string(),
-//!     interact: None,
-//! };
+//!     None,
+//! );
 //!
 //! // Create an incoming payment request
 //! let payment_request = CreateIncomingPaymentRequest {
@@ -75,9 +74,10 @@ pub mod wallet_address;
 pub use common::*;
 
 pub use auth::{
-    AccessItem, AccessToken, AccessTokenRequest, AccessTokenResponse, Continue, ContinueRequest,
-    ContinueResponse, GrantRequest, GrantResponse, IncomingPaymentAction, InteractRequest,
-    InteractResponse, LimitsOutgoing, OutgoingPaymentAction, QuoteAction,
+    AccessItem, AccessToken, AccessTokenRequest, AccessTokenResponse, Continue,
+    ContinueAccessToken, ContinueRequest, ContinueResponse, GrantRequest, GrantResponse,
+    IncomingPaymentAction, InteractFinish, InteractRequest, InteractResponse, LimitsOutgoing,
+    OutgoingPaymentAction, QuoteAction,
 };
 
 pub use resource::{
